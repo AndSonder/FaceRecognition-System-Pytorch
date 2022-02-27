@@ -1,0 +1,6 @@
+<snippet>
+	<description>for: j = 0 ... n - 1</description>
+	<content><![CDATA[for (int j = 0; j < n; j ++ )]]></content>
+	<tabTrigger>fo</tabTrigger>
+	<scope>(source.c | source.objc | source.c++ | source.objc++) - meta.preprocessor.include - comment - string</scope>
+</snippet>

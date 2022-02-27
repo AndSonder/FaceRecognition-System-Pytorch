@@ -1,0 +1,22 @@
+<snippet>
+	<description>int lowbit - 树状数组</description>
+	<content><![CDATA[int lowbit(int x)
+{
+    return x & -x;
+}
+
+void update(int x, int c)  // 位置x加c
+{
+    for (int i = x; i <= n; i += lowbit(i)) tr[i] += c;
+}
+
+int query(int x)  // 返回前x个数的和
+{
+    int res = 0;
+    for (int i = x; i; i -= lowbit(i)) res += tr[i];
+    return res;
+}
+]]></content>
+	<tabTrigger>int lo</tabTrigger>
+	<scope>(source.c | source.objc | source.c++ | source.objc++) - meta.preprocessor.include - comment - string</scope>
+</snippet>

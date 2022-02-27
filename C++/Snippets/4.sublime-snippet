@@ -1,0 +1,20 @@
+<snippet>
+	<description>div - 高精度除以低精度</description>
+	<content><![CDATA[vector<int> div(vector<int> &A, int b, int &r)  // A / b = C ... r, A >= 0, b > 0
+{
+    vector<int> C;
+    r = 0;
+    for (int i = A.size() - 1; i >= 0; i -- )
+    {
+        r = r * 10 + A[i];
+        C.push_back(r / b);
+        r %= b;
+    }
+    reverse(C.begin(), C.end());
+    while (C.size() > 1 && C.back() == 0) C.pop_back();
+    return C;
+}
+]]></content>
+	<tabTrigger>vector&lt;int&gt; div</tabTrigger>
+	<scope>(source.c | source.objc | source.c++ | source.objc++) - meta.preprocessor.include - comment - string</scope>
+</snippet>

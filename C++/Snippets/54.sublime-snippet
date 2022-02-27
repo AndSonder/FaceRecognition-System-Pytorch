@@ -1,0 +1,14 @@
+<snippet>
+	<description>bool is_prime - 判定质数</description>
+	<content><![CDATA[bool is_prime(int x)  // 判定质数
+{
+    if (x < 2) return false;
+    for (int i = 2; i <= x / i; i ++ )
+        if (x % i == 0)
+            return false;
+    return true;
+}
+]]></content>
+	<tabTrigger>bool is_p</tabTrigger>
+	<scope>(source.c | source.objc | source.c++ | source.objc++) - meta.preprocessor.include - comment - string</scope>
+</snippet>

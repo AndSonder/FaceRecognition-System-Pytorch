@@ -1,0 +1,87 @@
+<snippet>
+	<description>bool dfs - DLX重复覆盖</description>
+	<content><![CDATA[int l[N], r[N], u[N], d[N], col[N], row[N], s[N], idx;
+int ans[N], top;  // 记录选择了哪些行
+bool st[M];  // N为节点数，M为列数
+
+void init()  // 初始化十字链表
+{
+    for (int i = 0; i <= m; i ++ )
+    {
+        l[i] = i - 1, r[i] = i + 1;
+        u[i] = d[i] = i;
+        s[i] = 0, col[i] = i;
+    }
+    l[0] = m, r[m] = 0;
+    idx = m + 1;
+}
+
+void add(int& hh, int& tt, int x, int y)  // 在十字链表中插入节点
+{
+    row[idx] = x, col[idx] = y, s[y] ++ ;
+    u[idx] = y, d[idx] = d[y], u[d[y]] = idx, d[y] = idx;
+    r[hh] = l[tt] = idx, r[idx] = tt, l[idx] = hh;
+    tt = idx ++ ;
+}
+
+int h()  // IDA*的启发函数
+{
+    int res = 0;
+    memset(st, 0, sizeof st);
+    for (int i = r[0]; i; i = r[i])
+    {
+        if (st[col[i]]) continue;
+        res ++ ;
+        st[col[i]] = true;
+        for (int j = d[i]; j != i; j = d[j])
+            for (int k = r[j]; k != j; k = r[k])
+                st[col[k]] = true;
+    }
+    return res;
+}
+
+void remove(int p)
+{
+    for (int i = d[p]; i != p; i = d[i])
+    {
+        r[l[i]] = r[i];
+        l[r[i]] = l[i];
+    }
+}
+
+void resume(int p)
+{
+    for (int i = u[p]; i != p; i = u[i])
+    {
+        r[l[i]] = i;
+        l[r[i]] = i;
+    }
+}
+
+bool dfs(int k)
+{
+    if (k + h() > top) return false;
+    if (!r[0])
+    {
+        top = k;
+        return true;
+    }
+    int p = r[0];
+    for (int i = r[0]; i; i = r[i])
+        if (s[i] < s[p])
+            p = i;
+    for (int i = d[p]; i != p; i = d[i])
+    {
+        ans[k] = row[i];
+        remove(i);
+        for (int j = r[i]; j != i; j = r[j]) remove(j);
+        if (dfs(k + 1)) return true;
+        for (int j = l[i]; j != i; j = l[j]) resume(j);
+        resume(i);
+    }
+    return false;
+}
+]]></content>
+	<tabTrigger>bool dfs</tabTrigger>
+	<scope>(source.c | source.objc | source.c++ | source.objc++) - meta.preprocessor.include - comment - string</scope>
+</snippet>

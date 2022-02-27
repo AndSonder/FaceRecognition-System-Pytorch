@@ -1,0 +1,11 @@
+<snippet>
+	<description>int find - 并查集</description>
+	<content><![CDATA[int find(int x)  // 并查集
+{
+    if (p[x] != x) p[x] = find(p[x]);
+    return p[x];
+}
+]]></content>
+	<tabTrigger>int find</tabTrigger>
+	<scope>(source.c | source.objc | source.c++ | source.objc++) - meta.preprocessor.include - comment - string</scope>
+</snippet>

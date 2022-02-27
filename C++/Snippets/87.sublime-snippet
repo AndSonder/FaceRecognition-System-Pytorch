@@ -1,0 +1,7 @@
+<snippet>
+	<description>typedef unsigned long long ULL;</description>
+	<content><![CDATA[typedef unsigned long long ULL;
+]]></content>
+	<tabTrigger>t</tabTrigger>
+	<scope>(source.c | source.objc | source.c++ | source.objc++) - meta.preprocessor.include - comment - string</scope>
+</snippet>

@@ -1,0 +1,51 @@
+<snippet>
+	<description>void splay - splay</description>
+	<content><![CDATA[struct Node
+{
+    int s[2], p, v;
+    int size;
+
+    void init(int _v, int _p)
+    {
+        v = _v, p = _p;
+        size = 1;
+    }
+}tr[N];
+int root, idx;
+
+void pushup(int x)
+{
+    // TODO: 利用子节点信息维护当前节点信息
+}
+
+void pushdown(int x)
+{
+    // TODO: 将懒标记下传
+}
+
+void rotate(int x)  // 旋转
+{
+    int y = tr[x].p, z = tr[y].p;
+    int k = tr[y].s[1] == x;
+    tr[z].s[tr[z].s[1] == y] = x, tr[x].p = z;
+    tr[y].s[k] = tr[x].s[k ^ 1], tr[tr[x].s[k ^ 1]].p = y;
+    tr[x].s[k ^ 1] = y, tr[y].p = x;
+    pushup(y), pushup(x);
+}
+
+void splay(int x, int k)  // splay操作
+{
+    while (tr[x].p != k)
+    {
+        int y = tr[x].p, z = tr[y].p;
+        if (z != k)
+            if ((tr[y].s[1] == x) ^ (tr[z].s[1] == y)) rotate(x);
+            else rotate(y);
+        rotate(x);
+    }
+    if (!k) root = x;
+}
+]]></content>
+	<tabTrigger>void spl</tabTrigger>
+	<scope>(source.c | source.objc | source.c++ | source.objc++) - meta.preprocessor.include - comment - string</scope>
+</snippet>

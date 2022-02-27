@@ -1,0 +1,42 @@
+<snippet>
+	<description>bool spfa - 判负环</description>
+	<content><![CDATA[int spfa()  // 如果存在负环，则返回true，否则返回false。
+{
+    // 不需要初始化dist数组
+    // 原理：如果某条最短路径上有n个点（除了自己），那么加上自己之后一共有n+1个点，
+    // 由抽屉原理一定有两个点相同，所以存在环。
+
+    int hh = 0, tt = 0;
+
+    for (int i = 1; i <= n; i ++ ) q[tt ++ ] = i, st[i] = true;
+
+    while (hh != tt)
+    {
+        int t = q[hh ++ ];
+        if (hh == N) hh = 0;
+        st[t] = false;
+
+        for (int i =  h[t]; ~i; i = ne[i])
+        {
+            int j = e[i];
+            if (dist[j] > dist[t] + w[i])
+            {
+                dist[j] = dist[t]  + w[i];
+                cnt[j] = cnt[t] + 1;
+                if (cnt[j] >= n) return true;
+                if (!st[j])
+                {
+                    st[j] = true;
+                    q[tt ++ ] = j;
+                    if (tt == N) tt = 0;
+                }
+            }
+        }
+    }
+
+    return false;
+}
+]]></content>
+	<tabTrigger>bool spf</tabTrigger>
+	<scope>(source.c | source.objc | source.c++ | source.objc++) - meta.preprocessor.include - comment - string</scope>
+</snippet>

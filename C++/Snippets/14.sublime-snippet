@@ -1,0 +1,113 @@
+<snippet>
+	<description>void splay - 动态树</description>
+	<content><![CDATA[struct Node
+{
+    int s[2], p, v;
+    int rev;
+    // TODO: 定义需要维护的信息和懒标记
+}tr[N];
+int stk[N];  // 栈
+
+void pushrev(int x)
+{
+    swap(tr[x].s[0], tr[x].s[1]);
+    tr[x].rev ^= 1;
+}
+
+void pushup(int x)
+{
+    // TODO: 利用子节点信息来维护当前节点的信息
+}
+
+void pushdown(int x)
+{
+    if (tr[x].rev)
+    {
+        pushrev(tr[x].s[0]), pushrev(tr[x].s[1]);
+        tr[x].rev = 0;
+    }
+    // TODO: 将当前节点的懒标记下传
+}
+
+bool isroot(int x)  // 判断x是否为原树的根节点
+{
+    return tr[tr[x].p].s[0] != x && tr[tr[x].p].s[1] != x;
+}
+
+void rotate(int x)  // splay的旋转操作
+{
+    int y = tr[x].p, z = tr[y].p;
+    int k = tr[y].s[1] == x;
+    if (!isroot(y)) tr[z].s[tr[z].s[1] == y] = x;
+    tr[x].p = z;
+    tr[y].s[k] = tr[x].s[k ^ 1], tr[tr[x].s[k ^ 1]].p = y;
+    tr[x].s[k ^ 1] = y, tr[y].p = x;
+    pushup(y), pushup(x);
+}
+
+void splay(int x)  // splay操作
+{
+    int top = 0, r = x;
+    stk[ ++ top] = r;
+    while (!isroot(r)) stk[ ++ top] = r = tr[r].p;
+    while (top) pushdown(stk[top -- ]);
+    while (!isroot(x))
+    {
+        int y = tr[x].p, z = tr[y].p;
+        if (!isroot(y))
+            if ((tr[y].s[1] == x) ^ (tr[z].s[1] == y)) rotate(x);
+            else rotate(y);
+        rotate(x);
+    }
+}
+
+void access(int x)  // 建立一条从根到x的路径，同时将x变成splay的根节点
+{
+    int z = x;
+    for (int y = 0; x; y = x, x = tr[x].p)
+    {
+        splay(x);
+        tr[x].s[1] = y, pushup(x);
+    }
+    splay(z);
+}
+
+void makeroot(int x)  // 将x变成原树的根节点
+{
+    access(x);
+    pushrev(x);
+}
+
+int findroot(int x)  // 找到x所在原树的根节点, 再将原树的根节点旋转到splay的根节点
+{
+    access(x);
+    while (tr[x].s[0]) pushdown(x), x = tr[x].s[0];
+    splay(x);
+    return x;
+}
+
+void split(int x, int y)  // 给x和y之间的路径建立一个splay，其根节点是y
+{
+    makeroot(x);
+    access(y);
+}
+
+void link(int x, int y)  // 如果x和y不连通，则加入一条x和y之间的边
+{
+    makeroot(x);
+    if (findroot(y) != x) tr[x].p = y;
+}
+
+void cut(int x, int y)  // 如果x和y之间存在边，则删除该边
+{
+    makeroot(x);
+    if (findroot(y) == x && tr[y].p == x && !tr[y].s[0])
+    {
+        tr[x].s[1] = tr[y].p = 0;
+        pushup(x);
+    }
+}
+]]></content>
+	<tabTrigger>void spl</tabTrigger>
+	<scope>(source.c | source.objc | source.c++ | source.objc++) - meta.preprocessor.include - comment - string</scope>
+</snippet>

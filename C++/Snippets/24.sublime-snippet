@@ -1,0 +1,11 @@
+<snippet>
+	<description>void add - 加边，费用流</description>
+	<content><![CDATA[void add(int a, int b, int c, int d)  // 添加一条边a->b，容量为c，费用为d；同时增加一条反向边
+{
+    e[idx] = b, f[idx] = c, w[idx] = d, ne[idx] = h[a], h[a] = idx ++ ;
+    e[idx] = a, f[idx] = 0, w[idx] = -d, ne[idx] = h[b], h[b] = idx ++ ;
+}
+]]></content>
+	<tabTrigger>void ad</tabTrigger>
+	<scope>(source.c | source.objc | source.c++ | source.objc++) - meta.preprocessor.include - comment - string</scope>
+</snippet>

@@ -1,0 +1,10 @@
+<snippet>
+	<description>LL gcd - 欧几里得算法</description>
+	<content><![CDATA[LL gcd(LL a, LL b)  // 欧几里得算法
+{
+    return b ? gcd(b, a % b) : a;
+}
+]]></content>
+	<tabTrigger>LL gc</tabTrigger>
+	<scope>(source.c | source.objc | source.c++ | source.objc++) - meta.preprocessor.include - comment - string</scope>
+</snippet>

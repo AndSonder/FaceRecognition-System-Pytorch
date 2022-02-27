@@ -1,0 +1,6 @@
+<snippet>
+	<description>add(a, b, c, d)</description>
+	<content><![CDATA[add(a, b, c, d);]]></content>
+	<tabTrigger>ad</tabTrigger>
+	<scope>(source.c | source.objc | source.c++ | source.objc++) - meta.preprocessor.include - comment - string</scope>
+</snippet>

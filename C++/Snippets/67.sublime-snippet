@@ -1,0 +1,9 @@
+<snippet>
+	<description>int h[N]...邻接表费用流</description>
+	<content><![CDATA[int h[N], e[M], f[M], w[M], ne[M], idx;
+int q[N], d[N], pre[N], incf[N];
+bool st[N];
+]]></content>
+	<tabTrigger>int h</tabTrigger>
+	<scope>(source.c | source.objc | source.c++ | source.objc++) - meta.preprocessor.include - comment - string</scope>
+</snippet>

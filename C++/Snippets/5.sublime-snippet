@@ -1,0 +1,10 @@
+<snippet>
+	<description>int lowbit - 找末尾1</description>
+	<content><![CDATA[int lowbit(int x)  // 返回末尾的1
+{
+    return x & -x;
+}
+]]></content>
+	<tabTrigger>int lo</tabTrigger>
+	<scope>(source.c | source.objc | source.c++ | source.objc++) - meta.preprocessor.include - comment - string</scope>
+</snippet>

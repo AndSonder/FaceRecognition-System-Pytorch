@@ -1,0 +1,11 @@
+<snippet>
+	<description>void add - 加边，最大流</description>
+	<content><![CDATA[void add(int a, int b, int c)  // 添加一条边a->b，容量为c；同时添加一条反向边
+{
+    e[idx] = b, f[idx] = c, ne[idx] = h[a], h[a] = idx ++ ;
+    e[idx] = a, f[idx] = 0, ne[idx] = h[b], h[b] = idx ++ ;
+}
+]]></content>
+	<tabTrigger>void ad</tabTrigger>
+	<scope>(source.c | source.objc | source.c++ | source.objc++) - meta.preprocessor.include - comment - string</scope>
+</snippet>

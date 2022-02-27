@@ -1,0 +1,18 @@
+<snippet>
+	<description>void get_primes - 线性筛质数</description>
+	<content><![CDATA[void get_primes(int n)  // 线性筛质数
+{
+    for (int i = 2; i <= n; i ++ )
+    {
+        if (!st[i]) primes[cnt ++ ] = i;
+        for (int j = 0; primes[j] <= n / i; j ++ )
+        {
+            st[primes[j] * i] = true;
+            if (i % primes[j] == 0) break;
+        }
+    }
+}
+]]></content>
+	<tabTrigger>void get_p</tabTrigger>
+	<scope>(source.c | source.objc | source.c++ | source.objc++) - meta.preprocessor.include - comment - string</scope>
+</snippet>

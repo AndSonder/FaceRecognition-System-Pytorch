@@ -1,0 +1,7 @@
+<snippet>
+	<description>dx, dy - 4方向偏移量</description>
+	<content><![CDATA[int dx[4] = {-1, 0, 1, 0}, dy[4] = {0, 1, 0, -1};
+]]></content>
+	<tabTrigger>int dx</tabTrigger>
+	<scope>(source.c | source.objc | source.c++ | source.objc++) - meta.preprocessor.include - comment - string</scope>
+</snippet>

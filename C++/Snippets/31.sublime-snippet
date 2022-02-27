@@ -1,0 +1,24 @@
+<snippet>
+	<description>bool find - 匈牙利算法</description>
+	<content><![CDATA[bool find(int x)
+{
+    for (int i = h[x]; i != -1; i = ne[i])
+    {
+        int j = e[i];
+        if (!st[j])
+        {
+            st[j] = true;
+            if (match[j] == 0 || find(match[j]))
+            {
+                match[j] = x;
+                return true;
+            }
+        }
+    }
+
+    return false;
+}
+]]></content>
+	<tabTrigger>bool find</tabTrigger>
+	<scope>(source.c | source.objc | source.c++ | source.objc++) - meta.preprocessor.include - comment - string</scope>
+</snippet>

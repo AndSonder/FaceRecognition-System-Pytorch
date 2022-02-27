@@ -1,0 +1,6 @@
+<snippet>
+	<description>memcpy</description>
+	<content><![CDATA[memcpy]]></content>
+	<tabTrigger>me</tabTrigger>
+	<scope>(source.c | source.objc | source.c++ | source.objc++) - meta.preprocessor.include - comment - string</scope>
+</snippet>

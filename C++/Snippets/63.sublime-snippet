@@ -1,0 +1,7 @@
+<snippet>
+	<description>int h[N]...邻接表不带权</description>
+	<content><![CDATA[int h[N], e[M], ne[M], idx;
+]]></content>
+	<tabTrigger>int h</tabTrigger>
+	<scope>(source.c | source.objc | source.c++ | source.objc++) - meta.preprocessor.include - comment - string</scope>
+</snippet>

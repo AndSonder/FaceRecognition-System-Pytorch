@@ -1,0 +1,23 @@
+<snippet>
+	<description>int merge - 左偏树</description>
+	<content><![CDATA[int v[N], dist[N], l[N], r[N], idx;
+
+bool cmp(int x, int y)  // 比较两个节点的权值大小
+{
+    if (v[x] != v[y]) return v[x] < v[y];
+    return x < y;
+}
+
+int merge(int x, int y)  // 合并两棵左偏树
+{
+    if (!x || !y) return x + y;
+    if (cmp(y, x)) swap(x, y);
+    r[x] = merge(r[x], y);
+    if (dist[r[x]] > dist[l[x]]) swap(l[x], r[x]);
+    dist[x] = dist[r[x]] + 1;
+    return x;
+}
+]]></content>
+	<tabTrigger>int mer</tabTrigger>
+	<scope>(source.c | source.objc | source.c++ | source.objc++) - meta.preprocessor.include - comment - string</scope>
+</snippet>

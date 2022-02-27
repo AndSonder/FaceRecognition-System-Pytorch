@@ -1,0 +1,7 @@
+<snippet>
+	<description>typedef long long LL;</description>
+	<content><![CDATA[typedef long long LL;
+]]></content>
+	<tabTrigger>t</tabTrigger>
+	<scope>(source.c | source.objc | source.c++ | source.objc++) - meta.preprocessor.include - comment - string</scope>
+</snippet>

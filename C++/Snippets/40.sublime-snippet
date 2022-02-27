@@ -1,0 +1,26 @@
+<snippet>
+	<description>int bsgs - BSGS</description>
+	<content><![CDATA[int bsgs(int a, int b, int p)  // a ^ x ≡ b (mod p) 的最小非负整数解
+{
+    if (b == 1) return 0;
+    int k = sqrt(p) + 1;
+    unordered_map<int, int> hash;
+    for (int i = 0, j = b; i < k; i ++ )
+    {
+        hash[j] = i;
+        j = (LL)j * a % p;
+    }
+    int ak = 1;
+    for (int i = 0; i < k; i ++ ) ak = (LL)ak * a % p;
+    for (int i = 1, j = ak; i <= k; i ++ )
+    {
+        if (hash.count(j) && (LL)i * k >= hash[j])
+            return (LL)i * k - hash[j];
+        j = (LL)j * ak % p;
+    }
+    return -1;
+}
+]]></content>
+	<tabTrigger>int bs</tabTrigger>
+	<scope>(source.c | source.objc | source.c++ | source.objc++) - meta.preprocessor.include - comment - string</scope>
+</snippet>

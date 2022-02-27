@@ -1,0 +1,42 @@
+<snippet>
+	<description>tarjan - v-无向图双连通分量</description>
+	<content><![CDATA[void tarjan(int u)
+{
+    dfn[u] = low[u] = ++ timestamp;
+    stk[ ++ top] = u;
+
+    if (u == root && h[u] == -1)
+    {
+        dcc_cnt ++ ;
+        dcc[dcc_cnt].push_back(u);
+        return;
+    }
+
+    int cnt = 0;
+    for (int i = h[u]; ~i; i = ne[i])
+    {
+        int j = e[i];
+        if (!dfn[j])
+        {
+            tarjan(j);
+            low[u] = min(low[u], low[j]);
+            if (dfn[u] <= low[j])
+            {
+                cnt ++ ;
+                if (u != root || cnt > 1) cut[u] = true;
+                ++ dcc_cnt;
+                int y;
+                do {
+                    y = stk[top -- ];
+                    dcc[dcc_cnt].push_back(y);
+                } while (y != j);
+                dcc[dcc_cnt].push_back(u);
+            }
+        }
+        else low[u] = min(low[u], dfn[j]);
+    }
+}
+]]></content>
+	<tabTrigger>void tar</tabTrigger>
+	<scope>(source.c | source.objc | source.c++ | source.objc++) - meta.preprocessor.include - comment - string</scope>
+</snippet>
