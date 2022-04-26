@@ -1,8 +1,0 @@
-<snippet>
-	<description>dx, dy - 8方向偏移量</description>
-	<content><![CDATA[int dx[8] = {-1, -1, -1, 0, 1, 1, 1, 0};
-int dy[8] = {-1, 0, 1, 1, 1, 0, -1, -1};
-]]></content>
-	<tabTrigger>int dx</tabTrigger>
-	<scope>(source.c | source.objc | source.c++ | source.objc++) - meta.preprocessor.include - comment - string</scope>
-</snippet>

@@ -1,7 +1,0 @@
-<snippet>
-	<description>typedef pair<int, int> PII;</description>
-	<content><![CDATA[typedef pair<int, int> PII;
-]]></content>
-	<tabTrigger>t</tabTrigger>
-	<scope>(source.c | source.objc | source.c++ | source.objc++) - meta.preprocessor.include - comment - string</scope>
-</snippet>

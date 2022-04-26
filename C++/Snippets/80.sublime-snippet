@@ -1,7 +1,0 @@
-<snippet>
-	<description>#include <set></description>
-	<content><![CDATA[#include <set>
-]]></content>
-	<tabTrigger>#i</tabTrigger>
-	<scope>(source.c | source.objc | source.c++ | source.objc++) - meta.preprocessor.include - comment - string</scope>
-</snippet>

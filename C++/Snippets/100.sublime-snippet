@@ -1,6 +1,0 @@
-<snippet>
-	<description>for</description>
-	<content><![CDATA[for]]></content>
-	<tabTrigger>fo</tabTrigger>
-	<scope>(source.c | source.objc | source.c++ | source.objc++) - meta.preprocessor.include - comment - string</scope>
-</snippet>

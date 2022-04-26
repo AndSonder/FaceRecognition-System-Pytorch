@@ -1,7 +1,0 @@
-<snippet>
-	<description>const double eps = 1e-8;</description>
-	<content><![CDATA[const double eps = 1e-8;
-]]></content>
-	<tabTrigger>c</tabTrigger>
-	<scope>(source.c | source.objc | source.c++ | source.objc++) - meta.preprocessor.include - comment - string</scope>
-</snippet>

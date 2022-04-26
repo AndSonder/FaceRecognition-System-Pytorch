@@ -1,6 +1,0 @@
-<snippet>
-	<description>cin</description>
-	<content><![CDATA[cin >> ]]></content>
-	<tabTrigger>ci</tabTrigger>
-	<scope>(source.c | source.objc | source.c++ | source.objc++) - meta.preprocessor.include - comment - string</scope>
-</snippet>
