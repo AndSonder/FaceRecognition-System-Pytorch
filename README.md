@@ -93,7 +93,13 @@ print(dist2)
 
 ## References
 
+[1] David Sandberg's facenet repo: https://github.com/davidsandberg/facenet
 
+[2] K. Zhang, Z. Zhang, Z. Li and Y. Qiao. *Joint Face Detection and Alignment Using Multitask Cascaded Convolutional Networks*, IEEE Signal Processing Letters, 2016. [PDF](https://kpzhang93.github.io/MTCNN_face_detection_alignment/paper/spl.pdf)
+
+[3] F. Schroff, D. Kalenichenko, J. Philbin. *FaceNet: A Unified Embedding for Face Recognition and Clustering*, arXiv:1503.03832, 2015. [PDF](https://arxiv.org/pdf/1503.03832)
+
+[4] polarisZhao's mtcnn-pytorch repo: https://github.com/polarisZhao/mtcnn-pytorch
 
 
 
