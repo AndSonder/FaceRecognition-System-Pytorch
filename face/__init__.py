@@ -59,4 +59,3 @@ class FaceSystem:
     def feature_compare(self, feature1, feature2):
         dist = np.sqrt(np.sum(np.square(np.abs(feature1 - feature2))))
         return dist
-

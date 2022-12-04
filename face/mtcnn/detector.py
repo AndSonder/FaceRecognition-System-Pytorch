@@ -179,7 +179,7 @@ def run_first_stage(image, net, scale, threshold):
     """ 
         Run P-Net, generate bounding boxes, and do NMS.
     """
-    width, height = image.size
+    width, height = image.size[0], image.size[1]
     sw, sh = math.ceil(width * scale), math.ceil(height * scale)
     img = image.resize((sw, sh), Image.BILINEAR)
     img = np.asarray(img, 'float32')
